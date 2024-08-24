@@ -31,5 +31,6 @@ extension JSONDecoder {
         /// if neither decoding works
         let unknownError = ErrorRespDTO(status: "error", code: "unknownError", message: "UnknownError")
         return .failure(unknownError)
+        
     }
 }
