@@ -14,7 +14,7 @@ protocol RespDTO {
 }
 
 /// Success Response
-struct NewsRespDTO: Decodable, RespDTO {
+struct NewsRespDTO: Decodable{
     
     let status: String
     let totalResults: Int
@@ -22,7 +22,7 @@ struct NewsRespDTO: Decodable, RespDTO {
 }
 
 /// Error Response
-struct ErrorRespDTO: Decodable, RespDTO {
+struct ErrorRespDTO: Decodable, Error {
     
     let status: String
     let code: String
