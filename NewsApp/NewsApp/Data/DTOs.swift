@@ -7,18 +7,21 @@
 
 import Foundation
 
-protocol RespDTO {
-    
-    /// Read-Only Property
-    var status: String { get }
-}
-
 /// Success Response
 struct NewsRespDTO: Decodable{
     
     let status: String
     let totalResults: Int
     let articles: [ArticleDTO]
+}
+
+extension NewsRespDTO {
+    
+    func toNews() -> News {
+        
+        return News(totalResults: self.totalResults,
+                    articles: self.articles.map { $0.toArticle() })
+    }
 }
 
 /// Error Response
@@ -41,10 +44,31 @@ struct ArticleDTO: Decodable {
     let content: String?
 }
 
+extension ArticleDTO {
+    
+    func toArticle() -> Article {
+        
+        return Article(source: self.source.toSource(),
+                       author: self.author,
+                       title: self.title,
+                       description: self.description,
+                       url: self.url,
+                       urlToImage: self.urlToImage,
+                       publishedAt: self.publishedAt,
+                       content: self.content)
+    }
+}
+
 struct SourceDTO: Decodable {
     
     let id: String?
     let name: String
 }
 
-
+extension SourceDTO {
+    
+    func toSource() -> Source {
+        
+        return Source(id: self.id, name: self.name)
+    }
+}
