@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct HeadlineView: View {
+    
+    @StateObject var headlineVM: HeadlineViewModel = .init()
+    
     var body: some View {
+        
         Text("Headline")
+        
     }
 }
 

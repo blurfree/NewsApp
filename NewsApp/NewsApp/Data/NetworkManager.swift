@@ -16,6 +16,8 @@ enum NewsType {
 
 final class NetworkManager {
     
+    static let shared = NetworkManager()
+    
     let baseURL: String = "https://newsapi.org/v2/top-headlines?"
     
     func fetchData(newsType: NewsType, completion: @escaping (Data?, Error?) -> Void) {
