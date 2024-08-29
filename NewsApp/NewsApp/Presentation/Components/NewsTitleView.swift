@@ -19,31 +19,35 @@ struct NewsTitleView: View {
     
     var body: some View {
         
-        VStack {
-
-            AsyncImage(url: URL(string: image), scale: scale) { image in
-
-                image.resizable()
-                    .cornerRadius(15)
-
-            } placeholder: {
-                /// During loading Image
-                ProgressView()
-            }
-            .aspectRatio(contentMode: .fit)
-            .padding(.top, 20)
-            .padding(.horizontal, 20)
+        NavigationLink(destination: NewsContentView()) {
             
-            Text(title)
-                .font(Font.pretendard(.bold, size: 24))
-                .padding(.bottom, 20)
+            VStack {
+
+                AsyncImage(url: URL(string: image), scale: scale) { image in
+
+                    image.resizable()
+                        .cornerRadius(15)
+
+                } placeholder: {
+                    /// During loading Image
+                    ProgressView()
+                }
+                .aspectRatio(contentMode: .fit)
+                .padding(.top, 20)
                 .padding(.horizontal, 20)
+                
+                Text(title)
+                    .font(Font.pretendard(.bold, size: 24))
+                    .padding(.bottom, 20)
+                    .padding(.horizontal, 20)
+                
+            }
+            .frame(width: screenWidth - 30)
+            .overlay {
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(Color.gray, lineWidth: 0.5)
+            }
             
-        }
-        .frame(width: screenWidth - 30)
-        .overlay {
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(Color.gray, lineWidth: 0.5)
         }
     }
 }
