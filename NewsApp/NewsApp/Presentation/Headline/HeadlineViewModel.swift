@@ -37,6 +37,11 @@ class HeadlineViewModel: ObservableObject {
                     print("headlineVM called")
                     
                     self.news = newsRespDTO.toNews()
+//                    
+//                    for news in self.news.articles {
+//                        
+//                        print("\(news.title)")
+//                    }
                     
                     print("\(self.news.totalResults)")
                 }

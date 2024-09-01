@@ -13,7 +13,7 @@ struct News {
     let articles: [Article]
 }
 
-struct Article {
+struct Article: Hashable {
  
     let source: Source
     let author: String?
@@ -25,7 +25,7 @@ struct Article {
     let content: String?
 }
 
-struct Source {
+struct Source: Hashable {
     
     let id: String?
     let name: String
